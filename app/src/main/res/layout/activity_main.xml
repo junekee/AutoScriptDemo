@@ -1,18 +1,67 @@
-<?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
-
-    <TextView
+    android:orientation="vertical"
+    android:gravity="center" >
+    <LinearLayout 
+        android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:orientation="horizontal">
+        <TextView 
+            android:id="@+id/location_tip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:text="点击屏幕设置位置"/>
+        <Button 
+            android:id="@+id/location_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:text="设置位置"/>
+    </LinearLayout>
+	<TextView
+	    android:id="@+id/tiptxt"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:textSize="20dp"
+	    android:text="提示信息"/>
+	<LinearLayout android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:orientation="horizontal">
+	    <TextView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="刷新间隔(秒)"
+	        android:textSize="20dp"
+	        >	     
+	    </TextView>
+	    <EditText
+	        android:id="@+id/txt_canshu"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:hint="请输入时间间隔"
+	        android:numeric="integer"
+	        android:textSize="20dp"/> 
+	     <Button 	        
+	        android:id="@+id/txt_setting"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="设置"/>  
+	</LinearLayout>
+    <Button
+        android:id="@+id/start"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-</android.support.constraint.ConstraintLayout>
+        android:text="开始模拟点击屏幕" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="停止点击"
+        android:id="@+id/end" />
+	<Button android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:text="滚动试图"
+	    android:id="@+id/scrollview"/>
+</LinearLayout>
