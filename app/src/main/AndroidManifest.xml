@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.clickservice"
+    package="com.demo.autoscript"
     android:versionCode="1"
     android:versionName="1.0" 
     >
@@ -14,7 +14,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.example.clickservice.MainActivity"
+            android:name="com.demo.autoscript.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,9 +22,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <service android:name=".BackGroundService">
+        <service android:name="com.demo.autoscript.BackGroundService">
 		</service>		
-		<activity android:name=".myScrollView"></activity>
+		<activity android:name="com.demo.autoscript.myScrollView"></activity>
     </application>
 	
 </manifest>

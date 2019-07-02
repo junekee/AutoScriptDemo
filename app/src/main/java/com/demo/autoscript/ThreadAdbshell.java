@@ -1,4 +1,4 @@
-package com.example.clickservice;
+package com.demo.autoscript;
 
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -7,12 +7,12 @@ import java.io.OutputStream;
 import android.util.Log;
 
 public class ThreadAdbshell extends Thread {
-	// ÉêÇë»ñÈ¡rootÈ¨ÏŞ£¬ÕâÒ»²½ºÜÖØÒª£¬²»È»»áÃ»ÓĞ×÷ÓÃ  
+	// ç”³è¯·è·å–rootæƒé™ï¼Œè¿™ä¸€æ­¥å¾ˆé‡è¦ï¼Œä¸ç„¶ä¼šæ²¡æœ‰ä½œç”¨  
 	public int start=1;
 	private final static String TAG="[ThreadAdbshell]";
     
     int x,y;
-    int distance;//Ë¢ĞÂ¼ä¸ô£¬µ¥Î»ºÁÃë
+    int distance;//åˆ·æ–°é—´éš”ï¼Œå•ä½æ¯«ç§’
 	public ThreadAdbshell(int x,int y)
 	{
 		this.x=x;
@@ -39,7 +39,7 @@ public class ThreadAdbshell extends Thread {
 					e.printStackTrace();
 				}
 			}
-			Log.d("µã»÷Î»ÖÃ£º",x+","+y);
+			Log.d("ç‚¹å‡»ä½ç½®ï¼š",x+","+y);
 			start++;
 			//String str="input tap 252 252";
 			String str="input tap "+x+" "+y; 
@@ -53,9 +53,9 @@ public class ThreadAdbshell extends Thread {
 	}
 	public void excuteShellCMD(String cmd) throws IOException
 	{
-		// ÉêÇë»ñÈ¡rootÈ¨ÏŞ£¬ÕâÒ»²½ºÜÖØÒª£¬²»È»»áÃ»ÓĞ×÷ÓÃ  
+		// ç”³è¯·è·å–rootæƒé™ï¼Œè¿™ä¸€æ­¥å¾ˆé‡è¦ï¼Œä¸ç„¶ä¼šæ²¡æœ‰ä½œç”¨  
 		Process process= Runtime.getRuntime().exec("su");
-		//»ñÈ¡ÊäÈëÁ÷
+		//è·å–è¾“å…¥æµ
         OutputStream outputStream = process.getOutputStream();  
         DataOutputStream dataOutputStream = new DataOutputStream(  
                 outputStream);  
@@ -63,7 +63,7 @@ public class ThreadAdbshell extends Thread {
         dataOutputStream.flush();  
         dataOutputStream.close();  
         outputStream.close();
-        Log.d(TAG, "µã»÷ÊÂ¼şÖ´ĞĞ");
+        Log.d(TAG, "ç‚¹å‡»äº‹ä»¶æ‰§è¡Œ");
 	}
 	public void setDistance(int dis)
 	{

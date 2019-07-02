@@ -5,7 +5,7 @@ android {
     buildToolsVersion "28.0.3"
 
     defaultConfig {
-        applicationId "com.example.clickservice"
+        applicationId "com.demo.autoscript"
         minSdkVersion 8
         targetSdkVersion 26
     }

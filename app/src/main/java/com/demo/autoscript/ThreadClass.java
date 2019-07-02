@@ -1,6 +1,4 @@
-package com.example.clickservice;
-
-import java.io.IOException;
+package com.demo.autoscript;
 
 import android.app.Instrumentation;
 import android.os.SystemClock;
@@ -14,31 +12,31 @@ public class ThreadClass extends Thread {
 	public void run() {
 		while(true)
 		{			
-			//ÀûÓÃProcessBuilderÖ´ĞĞshellÃüÁî
+			//åˆ©ç”¨ProcessBuilderæ‰§è¡Œshellå‘½ä»¤
 	        /*String[] order = {
 	                "input",
 	                "tap",
 	                "" + x,
 	                "" + y
 	        };
-	        Log.d("µã»÷Î»ÖÃ", x+","+y);
+	        Log.d("ç‚¹å‡»ä½ç½®", x+","+y);
 	        try {
 	            new ProcessBuilder(order).start();
 	        } catch (IOException e) {
 	            e.printStackTrace();
 	        }*/
-			// ¿ÉÒÔ²»ÓÃÔÚ Activity ÖĞÔö¼ÓÈÎºÎ´¦Àí£¬¸÷ Activity ¶¼¿ÉÒÔÏìÓ¦ 
+			// å¯ä»¥ä¸ç”¨åœ¨ Activity ä¸­å¢åŠ ä»»ä½•å¤„ç†ï¼Œå„ Activity éƒ½å¯ä»¥å“åº” 
 			 try {  
 				Instrumentation inst = new Instrumentation();  
 				inst.sendPointerSync(MotionEvent.obtain(SystemClock.uptimeMillis(),SystemClock.uptimeMillis(),   
 				    MotionEvent.ACTION_DOWN, x, y, 0));  
 				inst.sendPointerSync(MotionEvent.obtain(SystemClock.uptimeMillis(),SystemClock.uptimeMillis(),   
 					MotionEvent.ACTION_UP, x, y, 0));
-				Log.d("µã»÷Î»ÖÃ", x+","+y);
+				Log.d("ç‚¹å‡»ä½ç½®", x+","+y);
 			 }catch(Exception e) {  
                  Log.e("Exception when sendPointerSync", e.toString());  
              }  
-	        //Ïß³ÌË¯Ãß10s
+	        //çº¿ç¨‹ç¡çœ 10s
 	        try {
 				Thread.sleep(3000);
 			} catch (InterruptedException e) {

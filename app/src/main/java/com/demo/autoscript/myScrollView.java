@@ -1,4 +1,4 @@
-package com.example.clickservice;
+package com.demo.autoscript;
 import android.app.Activity;
 import android.os.Bundle;
 

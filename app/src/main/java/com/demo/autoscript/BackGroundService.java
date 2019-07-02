@@ -1,4 +1,4 @@
-package com.example.clickservice;
+package com.demo.autoscript;
 
 import android.app.Service;
 import android.content.Intent;
@@ -10,7 +10,7 @@ public class BackGroundService extends Service{
     public static final String TAG = "BackGroundService";  
     ThreadAdbshell thshell;
     int distance;
-     //´´½¨·şÎñÊ±µ÷ÓÃ
+     //åˆ›å»ºæœåŠ¡æ—¶è°ƒç”¨
      @Override  
      public void onCreate() {  
          super.onCreate();  
@@ -19,7 +19,7 @@ public class BackGroundService extends Service{
          distance=1000;
      }  
    
-     //·şÎñÖ´ĞĞµÄ²Ù×÷
+     //æœåŠ¡æ‰§è¡Œçš„æ“ä½œ
      @Override  
      public int onStartCommand(Intent intent, int flags, int startId) {  
          Log.d(TAG, "onStartCommand");  
@@ -29,21 +29,21 @@ public class BackGroundService extends Service{
          thshell.setY(intent.getIntExtra("y", 185));
          if(!thshell.isAlive())
          {
-        	 Log.d("Ïß³ÌÊÇ·ñÕıÔÚÖ´ĞĞ", thshell.isAlive()+"");
+        	 Log.d("çº¿ç¨‹æ˜¯å¦æ­£åœ¨æ‰§è¡Œ", thshell.isAlive()+"");
         	 thshell.start();      	 
          }
          
          return super.onStartCommand(intent, flags, startId);  
      }  
        
-     //Ïú»Ù·şÎñÊ±µ÷ÓÃ
+     //é”€æ¯æœåŠ¡æ—¶è°ƒç”¨
      @Override  
      public void onDestroy() {  
          super.onDestroy();  
          Log.d(TAG, "onDestroy");  
      }  
    
-     //bindService()Æô¶¯ServiceÊ±²Å»áµ÷ÓÃonBind()·½·¨
+     //bindService()å¯åŠ¨Serviceæ—¶æ‰ä¼šè°ƒç”¨onBind()æ–¹æ³•
     @Override  
     public IBinder onBind(Intent intent) {  
          return null;  
