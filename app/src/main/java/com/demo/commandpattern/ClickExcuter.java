@@ -1,8 +1,11 @@
 package com.demo.commandpattern;
 
+import com.demo.autoscript.ThreadAdbshell;
+
 public class ClickExcuter implements Excuter {
 
     private Requester reqest;
+    private ThreadAdbshell shell;
     private int xoff = 0;
     private int yoff = 0;
 
@@ -10,12 +13,24 @@ public class ClickExcuter implements Excuter {
         this.reqest = reqest;
         xoff = x;
         yoff = y;
-
+    }
+    public ClickExcuter(ThreadAdbshell sh,int x, int y) {
+        this.shell = sh;
+        xoff = x;
+        yoff = y;
     }
 
     @Override
     public void excute() {
-        reqest.click(xoff, yoff);
+        if (reqest!=null) {
+            reqest.click(xoff, yoff);
+        }
+        if (shell!=null) {
+            shell.setX(xoff);
+            shell.setY(yoff);
+            shell.setDuration(0);
+            shell.run();
+        }
     }
 
 }

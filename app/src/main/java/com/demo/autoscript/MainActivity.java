@@ -89,7 +89,7 @@ public class MainActivity extends Activity implements OnClickListener{
 				txt.setText("设置刷新间隔为:"+distance/1000+"秒");
 				break;
 			case R.id.location_btn:
-				Toast.makeText(this, "设置成功", 1500).show();
+				Toast.makeText(this, "设置成功", Toast.LENGTH_LONG).show();
 				break;
 			default:
 				break;
