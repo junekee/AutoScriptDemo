@@ -58,7 +58,7 @@ public class ThreadAdbshell extends Thread {
 		//获取输入流
         OutputStream outputStream = process.getOutputStream();  
         DataOutputStream dataOutputStream = new DataOutputStream(  
-                outputStream);  
+                outputStream);
         dataOutputStream.writeBytes(cmd);  
         dataOutputStream.flush();  
         dataOutputStream.close();  
