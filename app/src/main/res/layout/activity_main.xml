@@ -4,7 +4,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center" >
-    <LinearLayout 
+    <LinearLayout
+        android:visibility="gone"
         android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
 	    android:orientation="horizontal">
@@ -22,12 +23,15 @@
             android:text="设置位置"/>
     </LinearLayout>
 	<TextView
+        android:visibility="gone"
 	    android:id="@+id/tiptxt"
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
 	    android:textSize="20dp"
 	    android:text="提示信息"/>
-	<LinearLayout android:layout_width="wrap_content"
+	<LinearLayout
+        android:visibility="gone"
+        android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
 	    android:orientation="horizontal">
 	    <TextView
@@ -55,13 +59,79 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="开始模拟点击屏幕" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/script01"
+            android:layout_width="wrap_content"
+            android:text="知乎脚本"
+            android:layout_height="40dp" />
+        <Button
+            android:id="@+id/script02"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp" />
+        <Button
+            android:id="@+id/script03"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp" />
+        <Button
+            android:id="@+id/script04"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp" />
+        <Button
+            android:id="@+id/cleanScript"
+            android:text="清空脚本"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp" />
+    </LinearLayout>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="停止点击"
         android:id="@+id/end" />
 	<Button android:layout_width="wrap_content"
+        android:visibility="gone"
 	    android:layout_height="wrap_content"
 	    android:text="滚动试图"
 	    android:id="@+id/scrollview"/>
+	<Button android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="返回桌面"
+		android:id="@+id/backhome"/>
+	<LinearLayout android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal">
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="Command:"
+			android:textSize="20dp"
+			>
+		</TextView>
+		<EditText
+			android:id="@+id/command_tv"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:hint="t:1000*x:200*y:200"
+			android:textSize="20dp"/>
+		<Button
+			android:id="@+id/addC_tv"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="添加"/>
+	</LinearLayout>
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		
+		android:orientation="vertical">
+		
+		<ListView
+			android:id="@+id/commandlv"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"></ListView>
+		
+	</LinearLayout>
 </LinearLayout>
