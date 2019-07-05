@@ -9,13 +9,14 @@ import android.widget.TextView;
 
 import com.demo.autoscript.R;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class CommandAdapter extends BaseAdapter {
-    private LinkedList<String> mData;
+    private ArrayList<String> mData;
     private Context mContext;
 
-    public CommandAdapter(LinkedList<String> mData, Context mContext) {
+    public CommandAdapter(ArrayList<String> mData, Context mContext) {
         this.mData = mData;
         this.mContext = mContext;
     }

@@ -8,6 +8,7 @@ import android.util.Log;
 import com.demo.commandpattern.ClickExcuter;
 import com.demo.commandpattern.CommandHandler;
 import com.demo.commandpattern.RestExcuter;
+import com.demo.commandpattern.SwipeExcuter;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -62,6 +63,11 @@ public class BackGroundService extends Service {
                 int x = Integer.parseInt(commandStr.substring(2, commandStr.indexOf("*")));
                 int y = Integer.parseInt(commandStr.substring(commandStr.indexOf("*")+1+2));
                 commandHandler.addRequset(new ClickExcuter(thshell, x,y));
+            }
+            //s
+            if (commandStr.startsWith("s")) {
+                String  x = (commandStr.substring(2));
+                commandHandler.addRequset(new SwipeExcuter(thshell, x));
             }
 
         }

@@ -38,7 +38,7 @@ public class MainActivity extends Activity implements OnClickListener {
     private Button start, stop, scrollview, setting, location_btn, backhome,addC;
     private Button script01,cleanScript;
     private int distance;
-    LinkedList<String> data = new LinkedList<>();
+    ArrayList<String> data = new ArrayList<>();
     BaseAdapter adaper;
 
     ListView commandlv;
@@ -164,6 +164,13 @@ public class MainActivity extends Activity implements OnClickListener {
 
             case R.id.script01:
                 ArrayList<String> scriptOneData = new ArrayList<>();
+                scriptOneData.add("t:1000");
+                scriptOneData.add("x:920*y:1420");
+                scriptOneData.add("t:2000");
+                scriptOneData.add("s:520 1500 520 600");
+                scriptOneData.add("t:1000");
+                scriptOneData.add("x:166*y:1036");
+                scriptOneData.add("t:1000");
                 scriptOneData.add("t:1000");
                 scriptOneData.add("x:166*y:1036");
                 scriptOneData.add("t:2000");

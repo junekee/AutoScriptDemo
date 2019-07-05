@@ -14,6 +14,8 @@ public class ThreadAdbshell extends Thread {
     int x=-1, y=-1;
     int distance=0;//刷新间隔，单位毫秒
     int duration=0;//刷新间隔，单位毫秒
+    private String twoPositionStr="0";
+    private String commandStr;
 
     public ThreadAdbshell(int x, int y) {
         this.x = x;
@@ -42,25 +44,42 @@ public class ThreadAdbshell extends Thread {
             }
         }*/
 
-        try {
+        /*try {
             Thread.sleep(distance);
         } catch (InterruptedException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
+        }*/
+        commandStr="0";
+
+        if(!twoPositionStr.equals("0")){
+            commandStr="input touchscreen swipe "+twoPositionStr;
         }
+
         if (x!=0) {
             Log.d("点击位置：", x + "," + y);
             start++;
             //String str="input tap 252 252";
             String str = "input tap " + x + " " + y;
+            commandStr = str;
+
+        }
+        if (!commandStr.equals("0")) {
             try {
-                Log.d(TAG, str);
-                excuteShellCMD(str);
+                //Log.d(TAG, commandStr);
+                excuteShellCMD(commandStr);
             } catch (IOException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             }
         }
+
+        try {
+            Thread.sleep(duration);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         //}
     }
 
@@ -91,5 +110,9 @@ public class ThreadAdbshell extends Thread {
 
     public void setY(int y) {
         this.y = y;
+    }
+
+    public void setComStr(String positionStr) {
+        this.twoPositionStr=positionStr;
     }
 }
