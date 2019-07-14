@@ -26,9 +26,8 @@ public class RestExcuter implements Excuter {
             reqest.rest(time);
         }
         if (shell!=null) {
+            shell.delParam();
             shell.setDuration(time);
-            shell.setX(0);
-            shell.setY(0);
             shell.run();
         }
     }

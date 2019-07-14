@@ -1,6 +1,9 @@
 package com.demo.autoscript;
 
 import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.Network;
+import android.net.NetworkCapabilities;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
@@ -31,6 +34,7 @@ import java.util.Map;
 
 public class MainActivity extends Activity implements OnClickListener {
 
+    private static final String TAG="[MainActivity]";
     int width, x;
     int height, y;
     private TextView txt, location_tip;
@@ -38,6 +42,8 @@ public class MainActivity extends Activity implements OnClickListener {
     private Button start, stop, scrollview, setting, location_btn, backhome,addC;
     private Button script01,cleanScript;
     private int distance;
+
+    private Context mContext;
     ArrayList<String> data = new ArrayList<>();
     BaseAdapter adaper;
 
@@ -52,6 +58,9 @@ public class MainActivity extends Activity implements OnClickListener {
         distance = 1000;
         x = 90;
         y = 185;
+
+        mContext  = getBaseContext();
+
         Log.d("width，height", width + "," + height);
         txt = (TextView) findViewById(R.id.tiptxt);
         start = (Button) findViewById(R.id.start);
@@ -75,7 +84,6 @@ public class MainActivity extends Activity implements OnClickListener {
         setting.setOnClickListener(this);
         location_btn.setOnClickListener(this);
         txt_edit.setText("1");
-        //new ThreadClass(width,height).start();
 
         initAdapter();
         initAddCommand();
@@ -90,12 +98,6 @@ public class MainActivity extends Activity implements OnClickListener {
     private void initAdapter() {
         commandlv = findViewById(R.id.commandlv);
         final Context mContext = getBaseContext();
-
-//        for (int i = 0; i < 10; i++) {
-//            data.add("data" + i);
-//        }]
-
-
         adaper = new CommandAdapter(data, mContext);
         commandlv.setAdapter(adaper);
     }
@@ -129,8 +131,6 @@ public class MainActivity extends Activity implements OnClickListener {
                 startIntent.putExtra("x", x);
                 startIntent.putExtra("y", y);
                 startIntent.putExtra("command", data);
-
-                backhome.performClick();
                 startService(startIntent);
                 break;
             case R.id.end:
@@ -154,6 +154,7 @@ public class MainActivity extends Activity implements OnClickListener {
                 intent.setAction(Intent.ACTION_MAIN);// "android.intent.action.MAIN"
                 intent.addCategory(Intent.CATEGORY_HOME); //"android.intent.category.HOME"
                 startActivity(intent);
+
                 break;
             case R.id.addC_tv:
 

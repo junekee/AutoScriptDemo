@@ -6,6 +6,7 @@
     android:versionName="1.0" 
     >
 <!--android:sharedUserId="android.uid.system"-->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.Internet" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
@@ -27,6 +28,7 @@
         <service android:name="com.demo.autoscript.BackGroundService">
 		</service>		
 		<activity android:name="com.demo.autoscript.myScrollView"></activity>
+
     </application>
 	
 </manifest>

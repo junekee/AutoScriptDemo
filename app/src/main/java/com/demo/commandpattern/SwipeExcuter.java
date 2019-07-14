@@ -12,9 +12,7 @@ public class SwipeExcuter implements Excuter {
     }
     @Override
     public void excute() {
-        shell.setX(0);
-        shell.setY(0);
-        shell.setDuration(0);
+        shell.delParam();
         shell.setComStr(positionStr);
         shell.run();
     }

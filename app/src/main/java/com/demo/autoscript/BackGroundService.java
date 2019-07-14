@@ -4,9 +4,11 @@ import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.demo.commandpattern.ClickExcuter;
 import com.demo.commandpattern.CommandHandler;
+import com.demo.commandpattern.PressKeyExcuter;
 import com.demo.commandpattern.RestExcuter;
 import com.demo.commandpattern.SwipeExcuter;
 
@@ -18,7 +20,6 @@ public class BackGroundService extends Service {
 
     public static final String TAG = "BackGroundService";
     ThreadAdbshell thshell;
-    int distance;
     private String commandStr;
     private ArrayList<String> data;
 
@@ -27,8 +28,7 @@ public class BackGroundService extends Service {
     public void onCreate() {
         super.onCreate();
         Log.d(TAG, "onCreate");
-        thshell = new ThreadAdbshell(90, 185);
-        distance = 1000;
+        thshell = new ThreadAdbshell();
     }
 
     //服务执行的操作
@@ -55,63 +55,36 @@ public class BackGroundService extends Service {
 
         data = (ArrayList<String>) intent.getSerializableExtra("command");
 
-        for (String commandStr:data) {
-            if (commandStr.startsWith("t")) {
-                commandHandler.addRequset(new RestExcuter(thshell, 1000));
-            }
-            if (commandStr.startsWith("x")) {
-                int x = Integer.parseInt(commandStr.substring(2, commandStr.indexOf("*")));
-                int y = Integer.parseInt(commandStr.substring(commandStr.indexOf("*")+1+2));
-                commandHandler.addRequset(new ClickExcuter(thshell, x,y));
-            }
-            //s
-            if (commandStr.startsWith("s")) {
-                String  x = (commandStr.substring(2));
-                commandHandler.addRequset(new SwipeExcuter(thshell, x));
+        for (String commandStr : data) {
+            String head = commandStr.substring(0, 1);
+            switch (head) {
+                case "t":
+                    int time = Integer.parseInt(commandStr.substring(2));
+                    commandHandler.addRequset(new RestExcuter(thshell, time));
+                    break;
+                case "x":
+
+                    int x = Integer.parseInt(commandStr.substring(2, commandStr.indexOf("*")));
+                    int y = Integer.parseInt(commandStr.substring(commandStr.indexOf("*") + 1 + 2));
+                    commandHandler.addRequset(new ClickExcuter(thshell, x, y));
+                    break;
+                case "s":
+                    String towPosithonStr = (commandStr.substring(2));
+                    commandHandler.addRequset(new SwipeExcuter(thshell, towPosithonStr));
+                    break;
+                case "h":
+                    commandHandler.addRequset(new PressKeyExcuter(thshell, 3));
+                    break;
+                case "r":
+                    commandHandler.addRequset(new PressKeyExcuter(thshell, 4));
+                    break;
+                default:
+                    Log.d(TAG, "无默认操作");
+                    Toast.makeText(getBaseContext(), commandStr + "无默认操作", Toast.LENGTH_SHORT).show();
+
             }
 
         }
-
-
-
-
-        /**
-
-        //打开南威
-        commandHandler.addRequset(new RestExcuter(thshell, 1000));
-        commandHandler.addRequset(new ClickExcuter(thshell, 166, 1036));
-        //登录南威
-        commandHandler.addRequset(new RestExcuter(thshell, 2000));
-        commandHandler.addRequset(new ClickExcuter(thshell, 577, 698));
-        //
-        commandHandler.addRequset(new RestExcuter(thshell, 3000));
-        commandHandler.addRequset(new ClickExcuter(thshell, 300, 200));
-
-        commandHandler.addRequset(new RestExcuter(thshell, 4000));
-        commandHandler.addRequset(new ClickExcuter(thshell, 400, 200));
-
-        commandHandler.addRequset(new RestExcuter(thshell, 5000));
-        commandHandler.addRequset(new ClickExcuter(thshell, 500, 200));
-
-        commandHandler.addRequset(new RestExcuter(thshell, 6000));
-        commandHandler.addRequset(new ClickExcuter(thshell, 600, 200));
-
-        commandHandler.addRequset(new RestExcuter(thshell, 7000));
-        commandHandler.addRequset(new ClickExcuter(thshell, 700, 200));
-
-        commandHandler.addRequset(new RestExcuter(thshell, 8000));
-        commandHandler.addRequset(new ClickExcuter(thshell, 800, 200));
-
-        commandHandler.addRequset(new RestExcuter(thshell, 1000));
-        commandHandler.addRequset(new ClickExcuter(thshell, 900, 200));
-
-        commandHandler.addRequset(new RestExcuter(thshell, 2000));
-        commandHandler.addRequset(new ClickExcuter(thshell, 1000, 200));
-
-        commandHandler.addRequset(new RestExcuter(thshell, 3000));
-        commandHandler.addRequset(new ClickExcuter(thshell, 11000, 200));
-
-         */
 
         commandHandler.handleRequest();
 

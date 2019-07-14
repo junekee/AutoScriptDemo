@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "com.demo.autoscript"
-        minSdkVersion 8
+        minSdkVersion 21
         targetSdkVersion 26
     }
 

@@ -4,13 +4,13 @@ import com.demo.autoscript.ThreadAdbshell;
 
 public class ClickExcuter implements Excuter {
 
-    private Requester reqest;
+    private Requester request;
     private ThreadAdbshell shell;
     private int xoff = 0;
     private int yoff = 0;
 
-    public ClickExcuter(Requester reqest,int x, int y) {
-        this.reqest = reqest;
+    public ClickExcuter(Requester request,int x, int y) {
+        this.request = request;
         xoff = x;
         yoff = y;
     }
@@ -22,13 +22,13 @@ public class ClickExcuter implements Excuter {
 
     @Override
     public void excute() {
-        if (reqest!=null) {
-            reqest.click(xoff, yoff);
+        if (request!=null) {
+            request.click(xoff, yoff);
         }
         if (shell!=null) {
+            shell.delParam();
             shell.setX(xoff);
             shell.setY(yoff);
-            shell.setDuration(0);
             shell.run();
         }
     }
