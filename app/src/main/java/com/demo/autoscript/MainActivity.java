@@ -26,6 +26,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.demo.adapter.CommandAdapter;
+import com.demo.scriptutils.VpnUtils;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -186,6 +187,11 @@ public class MainActivity extends Activity implements OnClickListener {
             case R.id.cleanScript:
                 data.clear();
                 adaper.notifyDataSetChanged();
+
+                // 测试vpn是否连接
+                boolean vpnConnected = VpnUtils.isVpnConnected(mContext);
+                Toast.makeText(mContext,"Vpn Connect:"+vpnConnected,Toast.LENGTH_LONG).show();
+
                 break;
 
             default:
